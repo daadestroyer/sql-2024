@@ -38,3 +38,26 @@ update Orders set amount = amount + 200 where customer_id > 3; -- command to upd
 
 -- delete command 
 delete from Customers; -- delete all records
+
+
+-- inner join 
+select first_name , last_name , age , item from Customers 
+INNER JOIN Orders ON 
+Customers.customer_id = Orders.order_id;
+
+select item , amount , order_id from Orders 
+INNER JOIN Customers ON 
+Customers.customer_id = Orders.order_id;
+
+select customer_id , shipping_id , first_name , last_name , status from Customers 
+INNER JOIN Shippings ON Customers.customer_id = Shippings.shipping_id;
+
+-- left join
+select Orders.order_id , Shippings.shipping_id ,  Orders.item , Orders.amount from Orders 
+LEFT JOIN Shippings ON 
+Orders.order_id = Shippings.shipping_id;
+
+-- right join
+select Employees.FirstName , Employees.LastName , Orders.OrderID from Employees
+RIGHT JOIN Orders ON
+Orders.EmployeeID = Employees.EmployeeID;
